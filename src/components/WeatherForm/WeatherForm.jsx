@@ -12,9 +12,8 @@ import useWeatherForm from "./useWeatherForm";
 
 export default function WeatherForm() {
   const [open, setOpen] = useState(false);
-  useEffect(() => setOpen(!!error), [error]);
   const { search, onSearchChange, result, isLoading, error } = useWeatherForm();
-
+  useEffect(() => setOpen(!!error), [error]);
   return (
     <>
       <TextField
