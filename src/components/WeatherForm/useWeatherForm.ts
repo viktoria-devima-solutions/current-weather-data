@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import weatherService from "../../services/weather/weather.service";
 import { OPENWEATHER_IMAGE_URL } from "../../constants/api.constant";
 import { AxiosError } from "axios";
-import { IWeather } from "./types";
+import { IWeatherApiWeather } from "../../services/weather/types";
 const useWeatherForm = () => {
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const [result, setResult] = useState<IWeather[]>([]);
+  const [result, setResult] = useState<IWeatherApiWeather[]>([]);
   const [error, setError] = useState("");
   useEffect(() => {
     setIsLoading(true);
