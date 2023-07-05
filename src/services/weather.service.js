@@ -1,26 +1,17 @@
-import axios from "axios";
-import { OPENWEATHER_URL } from "../constants/api.constant";
+import weatherApiAxios from "../utils/weatherApiAxios.util";
 const weatherService = {
-  getWeatherData: (search) => {
-    const openWeatherApiKey = process.env.NEXT_PUBLIC_OPENWEATHERMAP_API_KEY;
-    axios.default.params = {};
-    axios.interceptors.request.use((config) => {
-      config.params["appid"] = openWeatherApiKey;
-      return config;
-    });
-    return axios
-      .get(`${OPENWEATHER_URL}`, {
+  getWeatherData: async (search) => {
+    console.log(weatherApiAxios.baseURL);
+    try {
+      return await weatherApiAxios.get("/weather", {
         params: {
           q: search,
           units: "metric",
         },
-      })
-      .then((response) => {
-        return response;
-      })
-      .catch((error) => {
-        throw error;
       });
+    } catch (error) {
+      throw error;
+    }
   },
 };
 export default weatherService;

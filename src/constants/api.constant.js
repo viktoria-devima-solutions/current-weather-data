@@ -1,3 +1,2 @@
-export const OPENWEATHER_URL =
-  "https://api.openweathermap.org/data/2.5/weather";
-export const OPENWEATHER_IAMGE_URL = "https://openweathermap.org/img/wn";
+export const OPENWEATHER_URL = "https://api.openweathermap.org/data/2.5";
+export const OPENWEATHER_IMAGE_URL = "https://openweathermap.org/img/wn";
