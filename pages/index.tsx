@@ -11,5 +11,5 @@ const HomePage = () => {
       <WeatherForm />
     </Box>
   );
-}
-export default HomePage
+};
+export default HomePage;

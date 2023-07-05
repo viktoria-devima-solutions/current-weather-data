@@ -1,12 +1,13 @@
 import { Snackbar, Alert } from "@mui/material";
 import styles from "./styles";
 import useErrorSnackbar from "./useErrorSnackbar";
-const ErrorSnackbar = ({ error }) => {
+import { ErrorSnackbarProps } from "./types";
+const ErrorSnackbar = ({ error }: ErrorSnackbarProps) => {
   const { open, closeSnackbar } = useErrorSnackbar(error);
   return (
     <Snackbar open={open} onClose={closeSnackbar}>
       <Alert onClose={closeSnackbar} severity="error" sx={styles.alert}>
-        {error?.response?.data.message}
+        {error}
       </Alert>
     </Snackbar>
   );
