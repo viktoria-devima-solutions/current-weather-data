@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import weatherService from "../../services/weather.service";
+import weatherService from "../../services/weather/weather.service";
 import { OPENWEATHER_IMAGE_URL } from "../../constants/api.constant";
 import { AxiosError } from "axios";
-import { Weather } from "./types";
+import { IWeather } from "./types";
 const useWeatherForm = () => {
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const [result, setResult] = useState<Weather[]>([]);
+  const [result, setResult] = useState<IWeather[]>([]);
   const [error, setError] = useState("");
   useEffect(() => {
     setIsLoading(true);
@@ -14,7 +14,7 @@ const useWeatherForm = () => {
     const getData = async () => {
       try {
         const response = await weatherService.getWeatherData(debouncedSearch);
-        const mappingResult = response.data.weather.map((element: Weather) => ({
+        const mappingResult = response.data.weather.map((element) => ({
           id: element.id,
           main: element.main,
           description: element.description,
@@ -24,7 +24,7 @@ const useWeatherForm = () => {
       } catch (error) {
         if (error instanceof AxiosError)
           setError(error?.response?.data.message);
-        else setError(String(error));
+        else setError((error as Error)?.message ?? "Unexpected error occurred");
         setResult([]);
       }
       setIsLoading(false);

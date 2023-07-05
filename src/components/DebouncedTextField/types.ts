@@ -1,4 +1,4 @@
-export interface DebouncedTextFieldProps {
+export interface IDebouncedTextFieldProps {
   setDebouncedSearch: (search: string) => void;
   debouncedDelay?: number;
 }

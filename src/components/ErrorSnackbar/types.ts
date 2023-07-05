@@ -1,3 +1,3 @@
-export interface ErrorSnackbarProps {
+export interface IErrorSnackbarProps {
   error: string;
 }

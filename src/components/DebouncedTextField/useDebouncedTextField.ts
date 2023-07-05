@@ -1,10 +1,10 @@
 import { ChangeEvent, useState } from "react";
 import debounce from "../../utils/debounce.util";
-import { DebouncedTextFieldProps } from "./types";
+import { IDebouncedTextFieldProps } from "./types";
 const useDebouncedTextField = ({
   setDebouncedSearch,
   debouncedDelay = 700,
-}: DebouncedTextFieldProps) => {
+}: IDebouncedTextFieldProps) => {
   const [search, setSearch] = useState("");
 
   const debouncedFunc = debounce((e: ChangeEvent<HTMLInputElement>) => {

@@ -1,10 +1,10 @@
 import { TextField } from "@mui/material";
 import useDebouncedTextField from "./useDebouncedTextField";
-import { DebouncedTextFieldProps } from "./types";
+import { IDebouncedTextFieldProps } from "./types";
 const DebouncedTextField = ({
   setDebouncedSearch,
   debouncedDelay = 700,
-}: DebouncedTextFieldProps) => {
+}: IDebouncedTextFieldProps) => {
   const { search, onSearchChange } = useDebouncedTextField({
     setDebouncedSearch,
     debouncedDelay,
