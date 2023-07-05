@@ -1,30 +1,16 @@
-import {
-  TextField,
-  Typography,
-  Box,
-  CircularProgress,
-  Snackbar,
-  Alert,
-} from "@mui/material";
-import { useEffect, useState } from "react";
+import { Typography, Box, CircularProgress } from "@mui/material";
 import styles from "./styles";
 import useWeatherForm from "./useWeatherForm";
-
-export default function WeatherForm() {
-  const [open, setOpen] = useState(false);
-  const { search, onSearchChange, result, isLoading, error } = useWeatherForm();
-  useEffect(() => setOpen(!!error), [error]);
+import ErrorSnackbar from "../ErrorSnackbar/ErrorSnackbar";
+import DebouncedTextField from "../DebouncedTextField/DebouncedTextField";
+const WeatherForm = () => {
+  const { result, isLoading, error, setDebouncedSearch } = useWeatherForm();
   return (
     <>
-      <TextField
-        id="outlined-basic"
-        label="Location"
-        variant="outlined"
-        value={search}
-        onChange={onSearchChange}
-      />
+      <DebouncedTextField setDebouncedSearch={setDebouncedSearch} />
       {isLoading && <CircularProgress />}
       {result &&
+        !isLoading &&
         result.map((weather) => (
           <Box key={weather.id} sx={styles.weatherCard}>
             <div>
@@ -38,15 +24,8 @@ export default function WeatherForm() {
             <img src={weather.icon} />
           </Box>
         ))}
-      <Snackbar open={open} onClose={() => setOpen(false)}>
-        <Alert
-          onClose={() => setOpen(false)}
-          severity="error"
-          sx={{ width: "100%" }}
-        >
-          {error?.response?.data.message}
-        </Alert>
-      </Snackbar>
+      <ErrorSnackbar error={error} />
     </>
   );
-}
+};
+export default WeatherForm;

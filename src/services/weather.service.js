@@ -1,10 +1,10 @@
 import axios from "axios";
 import { OPENWEATHER_URL } from "../constants/api.constant";
 const weatherService = {
-  getWeatherData: function (search) {
+  getWeatherData: (search) => {
     const openWeatherApiKey = process.env.NEXT_PUBLIC_OPENWEATHERMAP_API_KEY;
     axios.default.params = {};
-    axios.interceptors.request.use(function (config) {
+    axios.interceptors.request.use((config) => {
       config.params["appid"] = openWeatherApiKey;
       return config;
     });
