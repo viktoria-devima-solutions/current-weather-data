@@ -7,10 +7,10 @@ const useWeatherForm = () => {
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [result, setResult] = useState<IWeatherApiWeather[]>([]);
-  const [error, setError] = useState("");
+  const [error, setError] = useState<string | null>(null);
   useEffect(() => {
     setIsLoading(true);
-    setError("");
+    setError(null);
     const getData = async () => {
       try {
         const response = await weatherService.getWeatherData(debouncedSearch);
