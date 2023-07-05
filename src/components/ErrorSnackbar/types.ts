@@ -1,3 +1,3 @@
 export interface IErrorSnackbarProps {
-  error: string;
+  error: string | null;
 }
