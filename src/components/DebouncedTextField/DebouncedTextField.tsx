@@ -1,11 +1,14 @@
 import { TextField } from "@mui/material";
 import useDebouncedTextField from "./useDebouncedTextField";
-
-const DebouncedTextField = ({ setDebouncedSearch, debouncedDelay = 700 }) => {
-  const { search, onSearchChange } = useDebouncedTextField(
+import { DebouncedTextFieldProps } from "./types";
+const DebouncedTextField = ({
+  setDebouncedSearch,
+  debouncedDelay = 700,
+}: DebouncedTextFieldProps) => {
+  const { search, onSearchChange } = useDebouncedTextField({
     setDebouncedSearch,
-    debouncedDelay
-  );
+    debouncedDelay,
+  });
   return (
     <TextField
       id="outlined-basic"

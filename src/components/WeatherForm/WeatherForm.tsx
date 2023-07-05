@@ -3,6 +3,7 @@ import styles from "./styles";
 import useWeatherForm from "./useWeatherForm";
 import ErrorSnackbar from "../ErrorSnackbar/ErrorSnackbar";
 import DebouncedTextField from "../DebouncedTextField/DebouncedTextField";
+import { Weather } from "./types";
 const WeatherForm = () => {
   const { result, isLoading, error, setDebouncedSearch } = useWeatherForm();
   return (
