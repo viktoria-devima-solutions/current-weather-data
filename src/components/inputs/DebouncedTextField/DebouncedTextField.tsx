@@ -5,10 +5,13 @@ import useDebouncedTextField from './useDebouncedTextField';
 import type { IDebouncedTextFieldProps } from './types';
 
 const DebouncedTextField = ({
+  value,
+  onChange,
   setDebouncedSearch,
   debouncedDelay = 700,
 }: IDebouncedTextFieldProps) => {
-  const { search, onSearchChange } = useDebouncedTextField({
+  const { onSearchChange } = useDebouncedTextField({
+    onChange,
     setDebouncedSearch,
     debouncedDelay,
   });
@@ -17,7 +20,7 @@ const DebouncedTextField = ({
       id="outlined-basic"
       label="Location"
       variant="outlined"
-      value={search}
+      value={value}
       onChange={onSearchChange}
     />
   );
