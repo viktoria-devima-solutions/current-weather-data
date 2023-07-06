@@ -5,6 +5,7 @@ import ErrorSnackbar from '../ErrorSnackbar/ErrorSnackbar';
 
 import styles from './styles';
 import useWeatherForm from './useWeatherForm';
+
 const WeatherForm = () => {
   const { result, isLoading, error, setDebouncedSearch } = useWeatherForm();
   return (
