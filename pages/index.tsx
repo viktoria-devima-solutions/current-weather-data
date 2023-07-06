@@ -1,6 +1,7 @@
-import { Typography, Box } from "@mui/material";
-import styles from "../src/components/WeatherForm/styles";
-import WeatherForm from "../src/components/WeatherForm/WeatherForm";
+import { Typography, Box } from '@mui/material';
+
+import styles from '../src/components/WeatherForm/styles';
+import WeatherForm from '../src/components/WeatherForm/WeatherForm';
 
 const HomePage = () => {
   return (
@@ -12,4 +13,5 @@ const HomePage = () => {
     </Box>
   );
 };
+
 export default HomePage;
