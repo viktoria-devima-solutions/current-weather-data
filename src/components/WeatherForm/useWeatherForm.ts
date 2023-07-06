@@ -6,12 +6,17 @@ import useQueryState from '../../hooks/useQueryState';
 import weatherService from '../../services/weather/weather.service';
 
 import type { IWeatherApiWeather } from '../../services/weather/types';
+import type { ChangeEvent } from 'react';
 
 const useWeatherForm = () => {
   const { value: debouncedSearch, setValue: setDebouncedSearch } = useQueryState('search');
+  const [searchValue, setSearchValue] = useState(debouncedSearch);
   const [isLoading, setIsLoading] = useState(true);
   const [result, setResult] = useState<IWeatherApiWeather[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const handleSetSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+  };
   useEffect(() => {
     setIsLoading(true);
     setError(null);
@@ -37,7 +42,7 @@ const useWeatherForm = () => {
     };
     getData();
   }, [debouncedSearch]);
-  return { result, isLoading, error, setDebouncedSearch };
+  return { result, isLoading, error, setDebouncedSearch, searchValue, handleSetSearchChange };
 };
 
 export default useWeatherForm;

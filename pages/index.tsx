@@ -3,6 +3,9 @@ import { Typography, Box } from '@mui/material';
 import styles from '../src/components/WeatherForm/styles';
 import WeatherForm from '../src/components/WeatherForm/WeatherForm';
 
+export async function getServerSideProps() {
+  return { props: {} };
+}
 const HomePage = () => {
   return (
     <Box sx={styles.container}>
@@ -13,5 +16,4 @@ const HomePage = () => {
     </Box>
   );
 };
-
 export default HomePage;

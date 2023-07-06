@@ -1,16 +1,21 @@
 import { Typography, Box, CircularProgress } from '@mui/material';
 
-import DebouncedTextField from '../DebouncedTextField/DebouncedTextField';
 import ErrorSnackbar from '../ErrorSnackbar/ErrorSnackbar';
+import DebouncedTextField from '../inputs/DebouncedTextField/DebouncedTextField';
 
 import styles from './styles';
 import useWeatherForm from './useWeatherForm';
 
 const WeatherForm = () => {
-  const { result, isLoading, error, setDebouncedSearch } = useWeatherForm();
+  const { result, isLoading, error, setDebouncedSearch, searchValue, handleSetSearchChange } =
+    useWeatherForm();
   return (
     <>
-      <DebouncedTextField setDebouncedSearch={setDebouncedSearch} />
+      <DebouncedTextField
+        value={searchValue}
+        onChange={handleSetSearchChange}
+        setDebouncedSearch={setDebouncedSearch}
+      />
       {isLoading && <CircularProgress />}
       {result &&
         !isLoading &&
