@@ -5,4 +5,5 @@ const debounce = <T>(fn: (...arg: T[]) => void, delay: number) => {
     timeoutId = setTimeout(() => fn(...args), delay);
   };
 };
+
 export default debounce;

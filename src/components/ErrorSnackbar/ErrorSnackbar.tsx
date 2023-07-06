@@ -1,7 +1,10 @@
-import { Snackbar, Alert } from "@mui/material";
-import styles from "./styles";
-import useErrorSnackbar from "./useErrorSnackbar";
-import { IErrorSnackbarProps } from "./types";
+import { Snackbar, Alert } from '@mui/material';
+
+import styles from './styles';
+import useErrorSnackbar from './useErrorSnackbar';
+
+import type { IErrorSnackbarProps } from './types';
+
 const ErrorSnackbar = ({ error }: IErrorSnackbarProps) => {
   const { open, closeSnackbar } = useErrorSnackbar(error);
   return (
@@ -12,4 +15,5 @@ const ErrorSnackbar = ({ error }: IErrorSnackbarProps) => {
     </Snackbar>
   );
 };
+
 export default ErrorSnackbar;
