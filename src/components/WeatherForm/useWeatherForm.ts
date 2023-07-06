@@ -1,10 +1,13 @@
-import { useState, useEffect } from "react";
-import weatherService from "../../services/weather/weather.service";
-import { OPENWEATHER_IMAGE_URL } from "../../constants/api.constant";
-import { AxiosError } from "axios";
-import { IWeatherApiWeather } from "../../services/weather/types";
+import { AxiosError } from 'axios';
+import { useState, useEffect } from 'react';
+
+import { OPENWEATHER_IMAGE_URL } from '../../constants/api.constant';
+import weatherService from '../../services/weather/weather.service';
+
+import type { IWeatherApiWeather } from '../../services/weather/types';
+
 const useWeatherForm = () => {
-  const [debouncedSearch, setDebouncedSearch] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [result, setResult] = useState<IWeatherApiWeather[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -21,10 +24,12 @@ const useWeatherForm = () => {
           icon: `${OPENWEATHER_IMAGE_URL}/${element.icon}@2x.png`,
         }));
         setResult(mappingResult);
-      } catch (error) {
-        if (error instanceof AxiosError)
-          setError(error?.response?.data.message);
-        else setError((error as Error)?.message ?? "Unexpected error occurred");
+      } catch (e) {
+        if (e instanceof AxiosError) {
+          setError(e?.response?.data.message);
+        } else {
+          setError((e as Error)?.message ?? 'Unexpected error occurred');
+        }
         setResult([]);
       }
       setIsLoading(false);
@@ -33,4 +38,5 @@ const useWeatherForm = () => {
   }, [debouncedSearch]);
   return { result, isLoading, error, setDebouncedSearch };
 };
+
 export default useWeatherForm;

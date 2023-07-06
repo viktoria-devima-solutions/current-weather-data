@@ -25,7 +25,7 @@ export interface IWeatherApiWind {
   gust: number;
 }
 export interface IWeatherApiRain {
-  "1h": number;
+  '1h': number;
 }
 export interface IWeatherApiClouds {
   all: number;

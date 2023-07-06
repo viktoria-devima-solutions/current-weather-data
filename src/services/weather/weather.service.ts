@@ -1,13 +1,16 @@
-import weatherApiAxios from "../../utils/weather-api-axios.util";
-import { IWeatherApiData } from "./types";
+import weatherApiAxios from '../../utils/weather-api-axios.util';
+
+import type { IWeatherApiData } from './types';
+
 const weatherService = {
   getWeatherData: async (search: string) => {
-    return await weatherApiAxios.get<IWeatherApiData>("/weather", {
+    return weatherApiAxios.get<IWeatherApiData>('/weather', {
       params: {
         q: search,
-        units: "metric",
+        units: 'metric',
       },
     });
   },
 };
+
 export default weatherService;

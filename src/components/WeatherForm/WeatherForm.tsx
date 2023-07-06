@@ -1,8 +1,10 @@
-import { Typography, Box, CircularProgress } from "@mui/material";
-import styles from "./styles";
-import useWeatherForm from "./useWeatherForm";
-import ErrorSnackbar from "../ErrorSnackbar/ErrorSnackbar";
-import DebouncedTextField from "../DebouncedTextField/DebouncedTextField";
+import { Typography, Box, CircularProgress } from '@mui/material';
+
+import DebouncedTextField from '../DebouncedTextField/DebouncedTextField';
+import ErrorSnackbar from '../ErrorSnackbar/ErrorSnackbar';
+
+import styles from './styles';
+import useWeatherForm from './useWeatherForm';
 const WeatherForm = () => {
   const { result, isLoading, error, setDebouncedSearch } = useWeatherForm();
   return (
@@ -21,7 +23,7 @@ const WeatherForm = () => {
                 {weather.description}
               </Typography>
             </div>
-            <img src={weather.icon} />
+            <img src={weather.icon} alt={weather.main} />
           </Box>
         ))}
       <ErrorSnackbar error={error} />

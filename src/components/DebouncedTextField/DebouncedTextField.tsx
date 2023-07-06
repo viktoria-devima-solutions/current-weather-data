@@ -1,6 +1,9 @@
-import { TextField } from "@mui/material";
-import useDebouncedTextField from "./useDebouncedTextField";
-import { IDebouncedTextFieldProps } from "./types";
+import { TextField } from '@mui/material';
+
+import useDebouncedTextField from './useDebouncedTextField';
+
+import type { IDebouncedTextFieldProps } from './types';
+
 const DebouncedTextField = ({
   setDebouncedSearch,
   debouncedDelay = 700,
@@ -19,4 +22,5 @@ const DebouncedTextField = ({
     />
   );
 };
+
 export default DebouncedTextField;
