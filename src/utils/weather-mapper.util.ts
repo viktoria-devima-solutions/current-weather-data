@@ -2,7 +2,7 @@ import { OPENWEATHER_IMAGE_URL } from '../constants/api.constant';
 
 import type { IWeatherApiData } from '../services/weather/types';
 
-const weatherMapper = (data: IWeatherApiData) => {
+const mapWeatherApiResponse = (data: IWeatherApiData) => {
   return data.weather.map((element) => ({
     id: element.id,
     main: element.main,
@@ -11,4 +11,4 @@ const weatherMapper = (data: IWeatherApiData) => {
   }));
 };
 
-export default weatherMapper;
+export default mapWeatherApiResponse;
