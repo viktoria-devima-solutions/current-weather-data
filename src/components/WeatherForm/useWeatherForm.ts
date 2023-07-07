@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 import useQueryState from '../../hooks/useQueryState';
 import weatherService from '../../services/weather/weather.service';
-import weatherMapper from '../../utils/weather-mapper.util';
+import mapWeatherApiResponse from '../../utils/weather-mapper.util';
 
 import type { IWeatherApiWeather } from '../../services/weather/types';
 import type { ChangeEvent } from 'react';
@@ -23,7 +23,7 @@ const useWeatherForm = (initialData: IWeatherApiWeather[], errorMessage: string)
     const getData = async () => {
       try {
         const response = await weatherService.getWeatherData(debouncedSearch);
-        const mappingResult = weatherMapper(response.data);
+        const mappingResult = mapWeatherApiResponse(response.data);
         setResult(mappingResult);
       } catch (e) {
         if (e instanceof AxiosError) {

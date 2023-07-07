@@ -1,6 +1,3 @@
-import type { IWeatherApiWeather } from './src/services/weather/types';
+import type { IWeatherFormProps } from './src/components/WeatherForm/types';
 
-export interface IHomePageProps {
-  data: IWeatherApiWeather[];
-  errorMessage: string;
-}
+export type IHomePageProps = IWeatherFormProps;
