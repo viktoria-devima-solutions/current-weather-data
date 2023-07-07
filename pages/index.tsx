@@ -6,8 +6,8 @@ import WeatherForm from '../src/components/WeatherForm/WeatherForm';
 import weatherService from '../src/services/weather/weather.service';
 import weatherMapper from '../src/utils/weather-mapper.util';
 
-import type { IHomePageProps } from './types';
 import type { IWeatherApiWeather } from '../src/services/weather/types';
+import type { IHomePageProps } from '../types';
 
 export async function getServerSideProps(context: { query: { search: string } }) {
   let errorMessage = '';
