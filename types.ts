@@ -1,4 +1,4 @@
-import type { IWeatherApiWeather } from '../src/services/weather/types';
+import type { IWeatherApiWeather } from './src/services/weather/types';
 
 export interface IHomePageProps {
   data: IWeatherApiWeather[];
