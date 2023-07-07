@@ -1,19 +1,19 @@
 import { AxiosError } from 'axios';
 import { useState, useEffect } from 'react';
 
-import { OPENWEATHER_IMAGE_URL } from '../../constants/api.constant';
 import useQueryState from '../../hooks/useQueryState';
 import weatherService from '../../services/weather/weather.service';
+import weatherMapper from '../../utils/weather-mapper.util';
 
 import type { IWeatherApiWeather } from '../../services/weather/types';
 import type { ChangeEvent } from 'react';
 
-const useWeatherForm = () => {
+const useWeatherForm = (initialData: IWeatherApiWeather[], errorMessage: string) => {
   const { value: debouncedSearch, setValue: setDebouncedSearch } = useQueryState('search');
   const [searchValue, setSearchValue] = useState(debouncedSearch);
-  const [isLoading, setIsLoading] = useState(true);
-  const [result, setResult] = useState<IWeatherApiWeather[]>([]);
-  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [result, setResult] = useState<IWeatherApiWeather[]>(initialData);
+  const [error, setError] = useState<string | null>(errorMessage);
   const handleSetSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
   };
@@ -23,12 +23,7 @@ const useWeatherForm = () => {
     const getData = async () => {
       try {
         const response = await weatherService.getWeatherData(debouncedSearch);
-        const mappingResult = response.data.weather.map((element) => ({
-          id: element.id,
-          main: element.main,
-          description: element.description,
-          icon: `${OPENWEATHER_IMAGE_URL}/${element.icon}@2x.png`,
-        }));
+        const mappingResult = weatherMapper(response.data);
         setResult(mappingResult);
       } catch (e) {
         if (e instanceof AxiosError) {

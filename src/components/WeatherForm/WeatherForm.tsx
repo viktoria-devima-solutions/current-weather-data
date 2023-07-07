@@ -6,9 +6,11 @@ import DebouncedTextField from '../inputs/DebouncedTextField/DebouncedTextField'
 import styles from './styles';
 import useWeatherForm from './useWeatherForm';
 
-const WeatherForm = () => {
+import type { IWeatherFormProps } from './types';
+
+const WeatherForm = ({ data, errorMessage }: IWeatherFormProps) => {
   const { result, isLoading, error, setDebouncedSearch, searchValue, handleSetSearchChange } =
-    useWeatherForm();
+    useWeatherForm(data, errorMessage);
   return (
     <>
       <DebouncedTextField
