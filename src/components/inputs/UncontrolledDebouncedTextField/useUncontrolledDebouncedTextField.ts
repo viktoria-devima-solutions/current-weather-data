@@ -1,23 +1,13 @@
-import debounce from '../../../utils/debounce.util';
+import { useState, type ChangeEvent } from 'react';
 
-import type { IUncontrolledDebouncedTextFieldProps } from './types';
-import type { ChangeEvent } from 'react';
-
-const useUncontrolledDebouncedTextField = ({
-  onChange,
-  setDebouncedSearch,
-  debouncedDelay = 700,
-}: IUncontrolledDebouncedTextFieldProps) => {
-  const debouncedFunc = debounce((e: ChangeEvent<HTMLInputElement>) => {
-    setDebouncedSearch(e.target.value);
-  }, debouncedDelay);
+const useUncontrolledDebouncedTextField = () => {
+  const [search, setSearch] = useState('');
 
   const onSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
-    onChange(e);
-    debouncedFunc(e);
+    setSearch(e.target.value);
   };
 
-  return { onSearchChange };
+  return { search, onSearchChange };
 };
 
 export default useUncontrolledDebouncedTextField;

@@ -4,12 +4,9 @@ const useQueryState = (paramName: string) => {
   const router = useRouter();
 
   const setValue = (val: string) => {
-    router.push(
-      {
-        query: { [paramName]: val },
-      },
-      '',
-    );
+    router.push({
+      query: { [paramName]: val },
+    });
   };
   return { value: router.query[paramName]?.toString() || '', setValue };
 };
