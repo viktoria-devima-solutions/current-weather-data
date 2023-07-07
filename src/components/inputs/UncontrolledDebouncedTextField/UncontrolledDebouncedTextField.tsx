@@ -5,20 +5,13 @@ import useUncontrolledDebouncedTextField from './useUncontrolledDebouncedTextFie
 import type { IUncontrolledDebouncedTextFieldProps } from './types';
 
 const UncontrolledDebouncedTextField = ({
-  value,
-  onChange,
   setDebouncedSearch,
   debouncedDelay = 700,
 }: IUncontrolledDebouncedTextFieldProps) => {
-  const { onSearchChange } = useUncontrolledDebouncedTextField({
-    value,
-    onChange,
-    setDebouncedSearch,
-    debouncedDelay,
-  });
+  const { search, onSearchChange } = useUncontrolledDebouncedTextField();
   return (
     <DebouncedTextField
-      value={value}
+      value={search}
       onChange={onSearchChange}
       setDebouncedSearch={setDebouncedSearch}
       debouncedDelay={debouncedDelay}
