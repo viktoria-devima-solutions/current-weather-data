@@ -7,9 +7,12 @@ const clientApiAxios = axios.create({
   timeout: 1000,
 });
 
-/*clientApiAxios.interceptors.request.use((config) => {
-  config.params.appid = localStorage.getItem('token');
+clientApiAxios.interceptors.request.use((config) => {
+  const accessToken = localStorage.getItem('token');
+  if (config.headers && accessToken) {
+    config.headers.Authorization = `Bearer ${accessToken}`;
+  }
   return config;
-});*/
+});
 
 export default clientApiAxios;

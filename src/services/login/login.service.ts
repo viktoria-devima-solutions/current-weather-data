@@ -9,6 +9,7 @@ const loginService = {
       })
       .then(({ data }) => data);
     localStorage.setItem('token', resp.token);
+    localStorage.setItem('user', JSON.stringify(resp.user));
   },
 };
 

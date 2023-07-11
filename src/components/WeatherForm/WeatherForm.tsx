@@ -1,7 +1,7 @@
 import { Typography, Box, CircularProgress } from '@mui/material';
 
 import ErrorSnackbar from '../ErrorSnackbar/ErrorSnackbar';
-import DebouncedTextField from '../inputs/DebouncedTextField/DebouncedTextField';
+import CitySelect from '../inputs/CitySelect/CitySelect';
 
 import styles from './styles';
 import useWeatherForm from './useWeatherForm';
@@ -13,7 +13,7 @@ const WeatherForm = ({ data, errorMessage }: IWeatherFormProps) => {
     useWeatherForm(data, errorMessage);
   return (
     <>
-      <DebouncedTextField
+      <CitySelect
         value={searchValue}
         onChange={handleSetSearchChange}
         setDebouncedSearch={setDebouncedSearch}
@@ -23,15 +23,13 @@ const WeatherForm = ({ data, errorMessage }: IWeatherFormProps) => {
         !isLoading &&
         result.map((weather) => (
           <Box key={weather.id} sx={styles.weatherCard}>
-            <div>
-              <Typography variant="h4" component="h2">
-                {weather.main}
-              </Typography>
-              <Typography variant="h5" component="h2">
-                {weather.description}
-              </Typography>
-            </div>
-            <img src={weather.icon} alt={weather.main} />
+            <Typography variant="h4" component="div">
+              {weather.main}
+            </Typography>
+            <Typography variant="h5" component="div">
+              {weather.description}
+            </Typography>
+            <img height={100} width={100} src={weather.icon} alt={weather.main} />
           </Box>
         ))}
       <ErrorSnackbar error={error} />

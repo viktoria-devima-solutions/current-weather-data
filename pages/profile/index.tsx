@@ -1,6 +1,9 @@
 import ProfileCard from '../../src/components/ProfileCard/ProfileCard';
 
-const ProfilePage = () => {
+import type { MyPage } from '../../src/components/layouts/types';
+
+const ProfilePage: MyPage = () => {
   return <ProfileCard />;
 };
 export default ProfilePage;
+ProfilePage.Layout = 'Empty';

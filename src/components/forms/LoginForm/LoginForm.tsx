@@ -14,7 +14,7 @@ const LoginForm = () => {
       {({ values, errors, touched, handleChange, handleBlur }) => (
         <Form>
           <Box sx={{ width: 300, height: 300, justifyContent: 'center' }}>
-            <Typography variant="h3" component="h3">
+            <Typography variant="h3" component="div">
               Sign in
             </Typography>
             <TextField

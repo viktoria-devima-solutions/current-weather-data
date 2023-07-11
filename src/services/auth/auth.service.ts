@@ -11,6 +11,6 @@ const login = (email: string, password: string) => {
   const token = jwt.sign({ id: user.id, email: user.email }, process.env.PRIVATE_KEY as string, {
     expiresIn: process.env.TOKEN_EXPIRES_IN,
   });
-  return token;
+  return { token, user: { id: user?.id, email: user?.email } };
 };
 export default login;
