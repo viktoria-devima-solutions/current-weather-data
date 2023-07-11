@@ -26,7 +26,7 @@ const useCitySelect = ({
       dispatch(setCitiesState(cities));
     };
     getData();
-  }, []);
+  });
   return { onSearchChange };
 };
 
