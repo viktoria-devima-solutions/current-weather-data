@@ -1,4 +1,4 @@
-import { Box, Card, Grid, Typography } from '@mui/material';
+import { Box, Card, Typography } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import { deepPurple } from '@mui/material/colors';
 

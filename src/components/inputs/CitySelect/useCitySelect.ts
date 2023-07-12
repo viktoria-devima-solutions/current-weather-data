@@ -1,4 +1,4 @@
-import { useEffect, type ChangeEvent, useState } from 'react';
+import { useEffect, type ChangeEvent } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { cities } from '../../../constants/api.constant';

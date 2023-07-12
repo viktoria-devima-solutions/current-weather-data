@@ -1,8 +1,8 @@
 import Footer from '../Footer/Footer';
-type EmptyLayoutProps = {
-  children: React.ReactNode;
-};
-const EmptyLayout = ({ children }: EmptyLayoutProps) => {
+
+import type { PropsWithChildren } from 'react';
+
+const EmptyLayout = ({ children }: PropsWithChildren) => {
   return (
     <>
       <main>{children}</main>

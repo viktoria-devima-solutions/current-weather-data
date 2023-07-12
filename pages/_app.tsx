@@ -6,7 +6,7 @@ import { wrapper } from '../src/redux/store';
 import type { MyAppProps } from '../src/components/layouts/types';
 
 function App({ Component, ...rest }: MyAppProps) {
-  const Layout = Layouts[Component.Layout] ?? ((page) => page);
+  const Layout = Layouts?.[Component?.Layout ?? 'Empty'] ?? ((page) => page);
   const { store, props } = wrapper.useWrappedStore(rest);
   return (
     <Provider store={store}>

@@ -6,7 +6,6 @@ import weatherService from '../../services/weather/weather.service';
 import mapWeatherApiResponse from '../../utils/weather-mapper.util';
 
 import type { IWeatherApiWeather } from '../../services/weather/types';
-import type { ChangeEvent } from 'react';
 
 const useWeatherForm = (initialData: IWeatherApiWeather[], errorMessage: string) => {
   const { value: debouncedSearch, setValue: setDebouncedSearch } = useQueryState('search');

@@ -1,10 +1,9 @@
 import Footer from '../Footer/Footer';
 import NavBar from '../NavBar/NavBar';
 
-type MainLayoutProps = {
-  children: React.ReactNode;
-};
-const MainLayout = ({ children }: MainLayoutProps) => {
+import type { PropsWithChildren } from 'react';
+
+const MainLayout = ({ children }: PropsWithChildren) => {
   return (
     <>
       <NavBar />

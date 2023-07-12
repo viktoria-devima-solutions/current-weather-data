@@ -32,7 +32,7 @@ const Footer = () => {
         </Grid>
         <Box mt={5}>
           <Typography variant="body2" color="text.secondary" align="center" component="div">
-            {'Copyright © '}
+            Copyright ©
             <Link color="inherit" href="https://www.devima.solutions//">
               Devima Solutions
             </Link>
