@@ -6,14 +6,15 @@ import WeatherForm from '../src/components/WeatherForm/WeatherForm';
 import weatherService from '../src/services/weather/weather.service';
 import mapWeatherApiResponse from '../src/utils/weather-mapper.util';
 
+import type { MyPage } from '../src/components/layouts/types';
 import type { IWeatherApiWeather } from '../src/services/weather/types';
 import type { IHomePageProps } from '../types';
 import type { GetServerSidePropsContext } from 'next';
 
-const HomePage = ({ data, errorMessage }: IHomePageProps) => {
+const HomePage: MyPage<IHomePageProps> = ({ data, errorMessage }: IHomePageProps) => {
   return (
     <Box sx={styles.container}>
-      <Typography variant="h3" component="h2">
+      <Typography variant="h3" component="div">
         Current weather data
       </Typography>
       <WeatherForm data={data} errorMessage={errorMessage} />
@@ -21,6 +22,7 @@ const HomePage = ({ data, errorMessage }: IHomePageProps) => {
   );
 };
 export default HomePage;
+HomePage.Layout = 'Main';
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   let errorMessage = '';

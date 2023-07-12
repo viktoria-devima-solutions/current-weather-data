@@ -6,7 +6,6 @@ import weatherService from '../../services/weather/weather.service';
 import mapWeatherApiResponse from '../../utils/weather-mapper.util';
 
 import type { IWeatherApiWeather } from '../../services/weather/types';
-import type { ChangeEvent } from 'react';
 
 const useWeatherForm = (initialData: IWeatherApiWeather[], errorMessage: string) => {
   const { value: debouncedSearch, setValue: setDebouncedSearch } = useQueryState('search');
@@ -14,8 +13,8 @@ const useWeatherForm = (initialData: IWeatherApiWeather[], errorMessage: string)
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState<IWeatherApiWeather[]>(initialData);
   const [error, setError] = useState<string | null>(errorMessage);
-  const handleSetSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(e.target.value);
+  const handleSetSearchChange = (newValue: string) => {
+    setSearchValue(newValue);
   };
   useEffect(() => {
     setIsLoading(true);

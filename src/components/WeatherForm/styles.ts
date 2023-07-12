@@ -6,7 +6,7 @@ const styles = {
   },
   weatherCard: {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
   },
 };
 
